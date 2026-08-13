@@ -1,36 +1,59 @@
-opciones = [
-    "Salir",
-    "Detalles",
-    "Sumar"
-]
-
 def ejecutar_detalles():
-    print("--### DETALLES ###---")
-    print("Programa de ejemplo del salón 403")
+    print("--### DETALLES ###--")
+    print("Programa de ejemplos del salón 403")
     print("Escrito por Roberto Treviño Cervantes")
+ 
 
 def ejecutar_salida():
     return
+ 
 
 def ejecutar_suma():
-    return 2 + 2
+    print(2 + 2)
 
-def seleccionar_opcion(opcion):
-    if opcion == 0:
-        ejecutar_salida()
-    elif opcion == 2:
-        print(ejecutar_suma())
+
+def ejecutar_resta():
+    print(4 - 2)
+
+
+opciones = {
+    "Salir": ejecutar_salida,
+    "Detalles": ejecutar_detalles,
+    "Sumar": ejecutar_suma,
+    "Restar": ejecutar_resta,
+}
+opciones_lista = list(opciones)
+numero_opciones = len(opciones)
+
+
+def ejecutar_seleccion(opcion):
+    seleccion = opciones.get(opcion, None)
+    
+    if seleccion == None:
+        seleccion_numero = int(opcion)
+
+        if seleccion_numero < numero_opciones:
+            seleccion = opciones_lista[seleccion_numero]
+
+            funcion_seleccionada = opciones[seleccion]
+            funcion_seleccionada()
+        else:
+            print("#=> No existe la opción")
+
     else:
-        ejecutar_detalles()
+        funcion_seleccionada = seleccion
+        funcion_seleccionada()
+
 
 def main():
     print("Iniciando Sistema...")
     print("--### MENU ###--")
-    print("0) " + opciones[0])
-    print("1) " + opciones[1])
-    print("2) " + opciones[2])
 
-    entrada = int(input("Selecciona una opción: "))
-    seleccionar_opcion(entrada)
+    for indice, opcion in enumerate(opciones):
+        print(f"{indice}) {opcion}")
+ 
+    opcion = input("Selecciona una opcion: ")
+    ejecutar_seleccion(opcion)
 
+ 
 main()
