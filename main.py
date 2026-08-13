@@ -1,3 +1,14 @@
+class Calculadora:
+    def __init__(self):
+        pass
+
+    def sumar(self):
+        pass
+
+    def restar(self):
+        pass
+
+
 def ejecutar_detalles():
     print("--### DETALLES ###--")
     print("Programa de ejemplos del salón 403")
@@ -6,21 +17,20 @@ def ejecutar_detalles():
 
 def ejecutar_salida():
     return
- 
-
-def ejecutar_suma():
-    print(2 + 2)
 
 
-def ejecutar_resta():
-    print(4 - 2)
+def input_entero(prompt):
+    return int(input(prompt))
 
+
+def operacion_aritmetica():
+    pass
 
 opciones = {
     "Salir": ejecutar_salida,
     "Detalles": ejecutar_detalles,
-    "Sumar": ejecutar_suma,
-    "Restar": ejecutar_resta,
+    "Sumar": operacion_aritmetica,
+    "Restar": operacion_aritmetica,
 }
 opciones_lista = list(opciones)
 numero_opciones = len(opciones)
