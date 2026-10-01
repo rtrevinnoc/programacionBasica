@@ -1,8 +1,11 @@
 from aritmetica import operaciones, division, multiplicacion, resta, suma
 from es.entrada import recibir_opcion, recibir_entrada
+from es.salida import producir_archivo
 
 if __name__ == "__main__":
     print(f"{"*" * 6} MENU {"*" * 6}")
+
+    historial = []
 
     while True:
         try:
@@ -23,6 +26,14 @@ if __name__ == "__main__":
 
         try:
             resultado = operaciones[opcion](a, b)
+
+            historial.append({
+                "Operacion": opcion,
+                "A": a,
+                "B": b
+            })
+
+            producir_archivo("historial.csv", historial)
         except KeyError:
             print(f"La opción que ingresó no es valida. Las opciones disponibles son: {', '.join(operaciones.keys())}.")
         except ZeroDivisionError:
